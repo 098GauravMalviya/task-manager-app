@@ -1,0 +1,228 @@
+/* PAGE BACKGROUND */
+.student-dashboard {
+  min-height: 100vh;
+  display: flex;
+  background: #f5f7ff; /* Light background for main content */
+  font-family: "Poppins", sans-serif;
+  color: #333; /* Dark text for readability */
+}
+
+/* SIDEBAR */
+.sd-sidebar {
+  width: 230px;
+  padding: 30px 20px;
+  background: #005eff; /* Solid blue sidebar */
+  color: #fff;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sd-sidebar-title {
+  font-size: 22px;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+/* SIDEBAR BUTTON */
+.sd-sidebar-btn {
+  padding: 12px 18px;
+  text-align: left;
+  border: none;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.22);
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.sd-sidebar-btn:hover,
+.sd-sidebar-btn.active {
+  background: rgba(255, 255, 255, 0.35);
+  transform: translateX(5px);
+}
+
+/* MAIN CONTENT AREA */
+.sd-main {
+  flex: 1;
+  background: #ffffff; /* White main content area */
+  padding: 25px;
+  border-radius: 0;
+}
+
+/* NAVBAR */
+.sd-navbar {
+  background: #ffffff;
+  padding: 15px 25px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.sd-title {
+  font-size: 22px;
+  margin: 0;
+  color: #222;
+}
+
+/* NAV BUTTONS */
+.sd-right {
+  display: flex;
+  gap: 15px;
+}
+
+.sd-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+  font-size: 14px;
+}
+
+/* Notification Button */
+.sd-notification {
+  background: #e6e9ff;
+  color: #0036a8;
+}
+
+.sd-notification:hover {
+  background: #d7dbff;
+}
+
+/* Logout Button */
+.sd-logout {
+  background: #ff5252;
+  color: white;
+}
+
+.sd-logout:hover {
+  background: #ff2e2e;
+}
+
+/* CONTENT BOX */
+.sd-content {
+  margin-top: 30px;
+}
+
+.sd-content {
+  margin-top: 30px;
+}
+
+.sd-welcome-box {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  color: #333;
+}
+.sd-assignments-box{
+  border: 2px black;
+  
+}
+/* ------------------- View Assignments ------------------- */
+
+.sd-assignments-box {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* space between assignment boxes */
+  padding: 10px;
+}
+
+.sd-assignment-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 15px 20px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sd-assignment-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.sd-assignment-card h4 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.sd-assignment-card p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.sd-assignment-details {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sd-back-btn {
+  background-color: #5a00ff;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.sd-back-btn:hover {
+  background-color: #4500cc;
+}
+
+.sd-submit-box {
+  margin-top: 20px;
+  padding: 15px;
+  border-top: 1px solid #ddd;
+}
+
+.sd-submit-box input[type="file"] {
+  margin-bottom: 10px;
+}
+
+.sd-submit-btn {
+  background-color: #009FFD;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sd-submit-btn:hover {
+  background-color: #007acc;
+}
+
+.sd-download-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 6px 12px;
+  background-color: #5a00ff;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.sd-download-btn:hover {
+  background-color: #4500cc;
+}
+
+.badge {
+  background: red;
+  color: white;
+  padding: 2px 7px;
+  border-radius: 50%;
+  font-size: 12px;
+  margin-left: 5px;
+}

@@ -1,0 +1,211 @@
+/* Container: sidebar + main */
+.teacher-dashboard {
+  display: flex;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background: #f5f7ff;
+  color: #222;
+}
+
+/* SIDEBAR */
+.teacher-sidebar {
+  width: 220px;
+  padding: 28px 18px;
+  background: #005eff; /* blue sidebar */
+  color: #fff;
+  box-shadow: 4px 0 18px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sidebar-brand {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* Sidebar buttons */
+.sidebar-btn {
+  padding: 12px 14px;
+  text-align: left;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.18s ease;
+}
+
+.sidebar-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateX(6px);
+}
+
+.sidebar-btn.active {
+  background: rgba(255, 255, 255, 0.22);
+  transform: translateX(6px);
+}
+
+/* MAIN area */
+.teacher-main {
+  flex: 1;
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* TOP NAVBAR inside main */
+.teacher-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  padding: 14px 18px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(20, 24, 40, 0.06);
+}
+
+.teacher-title {
+  margin: 0;
+  font-size: 20px;
+  color: #0f1724;
+}
+
+/* right side of navbar */
+.nav-right {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.nav-btn {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: none;
+  background: #e6eefc;
+  color: #003a9f;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.nav-btn:hover {
+  background: #d7e6ff;
+}
+
+.logout-btn {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: none;
+  background: #ff5252;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: #ff2e2e;
+}
+
+/* CONTENT area below navbar */
+.teacher-content {
+  margin-top: 22px;
+  background: #fff;
+  padding: 22px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(20, 24, 40, 0.04);
+  color: #222;
+}
+
+/* small responsive tweak */
+@media (max-width: 860px) {
+  .teacher-dashboard {
+    flex-direction: column;
+  }
+  .teacher-sidebar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+  }
+  .teacher-main {
+    padding: 12px;
+  }
+}
+
+/* ------------------- Assignment Card ------------------- */
+
+.sd-assignments-box {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 10px;
+}
+
+.sd-assignment-card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 15px 20px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sd-assignment-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.sd-assignment-card h4 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.sd-assignment-card p {
+  margin: 5px 0;
+  color: #555;
+}
+
+/* Submissions List */
+.sd-submissions-list {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sd-submission-card {
+  padding: 10px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.sd-submission-card p {
+  margin: 3px 0;
+}
+
+.sd-download-btn {
+  display: inline-block;
+  margin-top: 5px;
+  padding: 5px 10px;
+  background-color: #5a00ff;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.sd-download-btn:hover {
+  background-color: #4500cc;
+}
+.badge {
+  background: red;
+  color: white;
+  padding: 2px 7px;
+  border-radius: 50%;
+  font-size: 12px;
+  margin-left: 5px;
+}
+

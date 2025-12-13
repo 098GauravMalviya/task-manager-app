@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "axios": "^1.13.2",
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.20.0",
+    "multer": "^2.0.2",
+    "nodemailer": "^7.0.10",
+    "nodemon": "^3.1.11",
+    "react-router-dom": "^7.9.6"
+  },
+  "name": "my_api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "login_reg.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node login_reg.js",
+    "dev": "nodemon login_reg.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
