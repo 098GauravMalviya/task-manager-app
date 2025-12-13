@@ -12,7 +12,7 @@ export default function CreateAssignment() {
     const teacherId = localStorage.getItem("userId");
 
     try {
-      await axios.post("http://localhost:3000/tasks/create", {
+      await axios.post("https://task-manager-backend-uuwk.onrender.com/tasks/create", {
         title,
         description,
         teacherId
