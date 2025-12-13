@@ -25,7 +25,7 @@ export default function Register() {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:3000/register", {
+      const res = await axios.post("https://task-manager-backend-uuwk.onrender.com/register", {
         username,
         email,
         password,
@@ -42,7 +42,7 @@ export default function Register() {
   // VERIFY
   const handleVerify = async () => {
     try {
-      const res = await axios.post("http://localhost:3000/verify-email", {
+      const res = await axios.post("https://task-manager-backend-uuwk.onrender.com/verify-email", {
         username,
         code: verificationCode,
       });
@@ -62,7 +62,7 @@ export default function Register() {
      axios.defaults.withCredentials = true;
 
     try {
-      const res = await axios.post("http://localhost:3000/login", {
+      const res = await axios.post("https://task-manager-backend-uuwk.onrender.com/login", {
         username: loginUser,
         password: loginPass,
 
