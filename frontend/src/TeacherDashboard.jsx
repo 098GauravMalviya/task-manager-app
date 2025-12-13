@@ -27,7 +27,7 @@ const TeacherDashboard = () => {
   };
 
   const fetchAssignments = async () => {
-    const res = await axios.get("http://localhost:3000/tasks/all");
+    const res = await axios.get("https://task-manager-backend-uuwk.onrender.com/tasks/all");
     setAssignments(res.data);
   };
 
@@ -45,7 +45,7 @@ const TeacherDashboard = () => {
       if (file) formData.append("file", file);
 
       await axios.post(
-        "http://localhost:3000/tasks/create",
+        "https://task-manager-backend-uuwk.onrender.com/tasks/create",
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
@@ -62,7 +62,7 @@ const TeacherDashboard = () => {
   useEffect(() => {
   const id = localStorage.getItem("userId");
 
-  axios.get(`http://localhost:3000/notifications/user/${id}`)
+  axios.get(`https://task-manager-backend-uuwk.onrender.com/notifications/user/${id}`)
     .then(res => {
       setNotifications(res.data);
       const unread = res.data.filter(n => !n.read).length;
@@ -72,7 +72,7 @@ const TeacherDashboard = () => {
 
 const updateSubmission = async (taskId, submissionIndex, status) => {
   try {
-    await axios.put("http://localhost:3000/tasks/submission/update", {
+    await axios.put("https://task-manager-backend-uuwk.onrender.com/tasks/submission/update", {
       taskId,
       submissionIndex,
       status
