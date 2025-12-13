@@ -9,7 +9,7 @@ export default function ProtectedRoute({ children }) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/auth/check")
+      .get("https://task-manager-backend-uuwk.onrender.com/auth/check")
       .then((res) => {
         if (res.data.loggedIn) setIsAuth(true);
         else setIsAuth(false);
