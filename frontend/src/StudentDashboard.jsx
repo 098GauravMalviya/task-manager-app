@@ -9,7 +9,7 @@ const StudentDashboard = () => {
 const navigate = useNavigate();
 
 useEffect(() => {
-  axios.get("http://localhost:3000/auth/check", { withCredentials: true })
+  axios.get("https://task-manager-backend-uuwk.onrender.com/auth/check", { withCredentials: true })
     .then(res => {
       if (res.data.role !== "student") {
         localStorage.clear();
@@ -77,7 +77,7 @@ useEffect(() => {
   try {
     const studentId = localStorage.getItem("userId");
 
-    const res = await axios.get(`http://localhost:3000/tasks/student/${studentId}`);
+    const res = await axios.get(`https://task-manager-backend-uuwk.onrender.com/tasks/student/${studentId}`);
     setGrades(res.data);
   } catch (error) {
     console.log(error);
@@ -98,7 +98,7 @@ useEffect(() => {
 
 const fetchAssignments = async (task) => {
   try {
-    const res = await axios.get("http://localhost:3000/tasks/all", { withCredentials: true });
+    const res = await axios.get("https://task-manager-backend-uuwk.onrender.com/tasks/all", { withCredentials: true });
     setAssignments(res.data);
   } catch (error) {
     console.log(error);
@@ -117,7 +117,7 @@ const handleSubmitAssignment = async () => {
   formData.append("studentId", localStorage.getItem("userId"));
 
   try {
-    await axios.post("http://localhost:3000/tasks/submit", formData, {
+    await axios.post("https://task-manager-backend-uuwk.onrender.com/tasks/submit", formData, {
       headers: { "Content-Type": "multipart/form-data" },  withCredentials: true 
     });
 
@@ -131,7 +131,7 @@ const handleSubmitAssignment = async () => {
 useEffect(() => {
   const id = localStorage.getItem("userId");
 
-  axios.get(`http://localhost:3000/notifications/user/${id}`)
+  axios.get(`https://task-manager-backend-uuwk.onrender.com/notifications/user/${id}`)
     .then(res => {
       setNotifications(res.data);
       const unread = res.data.filter(n => !n.read).length;
