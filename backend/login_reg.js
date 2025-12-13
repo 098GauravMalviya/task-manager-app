@@ -12,8 +12,9 @@ const PORT = 3000;
 // cors because backend and front end are running on different port numbers
 const cors = require("cors");
 app.use(cors({
-  origin: "http://localhost:5173",
-  methods: ["GET", "POST", "PUT", "DELETE"], // <-- change to your React app origin (protocol + host + port)
+  origin: ["http://localhost:5173", "https://task-manager-app-vercel-gamma.vercel.app"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+   // <-- change to your React app origin (protocol + host + port)
   credentials: true
 }));
 
