@@ -32,15 +32,15 @@ app.set("trust proxy", 1);
 
 app.use(
   session({
-    secret: "your_session_secret",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
-      httpOnly: true,
-      secure: false, // keep false since you are on http localhost
-      sameSite: "lax",
-      maxAge: 1000 * 60 * 60 * 24
-    }
+  httpOnly: true,
+  secure: true,
+  sameSite: "none",
+  maxAge: 1000 * 60 * 60 * 24
+}
   })
 );
 //upload assignment 
@@ -50,14 +50,10 @@ const submissionRoutes = require("./routes/submissionRoutes");
 
 // Connect to MongoDB
 //mongoose.connect('mongodb://localhost:27017/userdata');
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB connected"))
+  .catch(err => console.error("MongoDB connection error:", err));
 
-mongoose.connection.on("connected", () => {
-  console.log("MongoDB connected");
-});
-
-mongoose.connection.on("error", (err) => {
-  console.log("MongoDB error:", err);
-});
 
 
 
@@ -203,7 +199,7 @@ app.post('/login', async (req, res) => {
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) return res.status(400).json({ message: 'Invalid credentials' });
 
-  const token = jwt.sign({ userId: user._id, role: user.role }, 'your_jwt_secret', { expiresIn: '1h' });
+  const token = jwt.sign({ userId: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
   // Invalidate any previous login by storing current token in user doc
   user.currentToken = token;
@@ -237,7 +233,7 @@ app.get('/profile', async (req, res) => {
     return res.status(401).json({ message: 'Not authenticated' });
 
   try {
-    const decoded = jwt.verify(req.session.token, 'your_jwt_secret');
+    const decoded = jwt.verify(req.session.token, process.env.JWT_SECRET);
     const user = await User.findById(decoded.userId).select('-password');
 
     if (!user) return res.status(404).json({ message: 'User not found' });
