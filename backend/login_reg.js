@@ -1,4 +1,6 @@
 require("dotenv").config();
+console.log("MONGO_URI exists:", !!process.env.MONGO_URI);
+
 const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
@@ -12,7 +14,7 @@ const PORT = 3000;
 // cors because backend and front end are running on different port numbers
 const cors = require("cors");
 app.use(cors({
-  origin: ["http://localhost:5173", "https://task-manager-app-vercel-gamma.vercel.app"],
+  origin: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
    // <-- change to your React app origin (protocol + host + port)
   credentials: true
@@ -37,8 +39,8 @@ app.use(
     saveUninitialized: false,
     cookie: {
   httpOnly: true,
-  secure: true,
-  sameSite: "none",
+  secure: process.env.NODE_ENV === "production",
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
   maxAge: 1000 * 60 * 60 * 24
 }
   })
