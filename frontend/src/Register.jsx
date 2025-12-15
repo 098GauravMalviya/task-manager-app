@@ -25,12 +25,11 @@ export default function Register() {
     e.preventDefault();
 
     try {
-      const res = await axios.post("https://task-manager-backend-uuwk.onrender.com/register", {
-        username,
-        email,
-        password,
-        role,
-      });
+      const res = await axios.post(
+  "https://task-manager-backend-uuwk.onrender.com/register",
+  { username, email, password, role },
+  { withCredentials: true }
+);
 
       setMessage(res.data.message);
       setShowVerifyPopup(true);
@@ -42,10 +41,12 @@ export default function Register() {
   // VERIFY
   const handleVerify = async () => {
     try {
-      const res = await axios.post("https://task-manager-backend-uuwk.onrender.com/verify-email", {
-        username,
-        code: verificationCode,
-      });
+      const res = await axios.post(
+  "https://task-manager-backend-uuwk.onrender.com/verify-email",
+  { username, code: verificationCode },
+  { withCredentials: true }
+);
+
 
       setMessage(res.data.message);
       setShowVerifyPopup(false);
