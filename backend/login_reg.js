@@ -1,5 +1,8 @@
 require("dotenv").config();
 console.log("MONGO_URI exists:", !!process.env.MONGO_URI);
+console.log("EMAIL_USER exists:", !!process.env.EMAIL_USER);
+console.log("EMAIL_PASS exists:", !!process.env.EMAIL_PASS);
+
 
 const express = require('express');
 const mongoose = require('mongoose');
