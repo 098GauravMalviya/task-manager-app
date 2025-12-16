@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function Register() {
+  const navigate = useNavigate();
   const [page, setPage] = useState("login");
 
   // Register states
@@ -61,7 +62,7 @@ export default function Register() {
   // LOGIN
   const handleLogin = async (e) => {
     e.preventDefault();
-    const navigate = useNavigate();
+    
     axios.defaults.withCredentials = true;
 
     try {
