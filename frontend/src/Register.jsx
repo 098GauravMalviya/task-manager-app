@@ -1,6 +1,8 @@
 import "./Register.css";
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 export default function Register() {
   const [page, setPage] = useState("login");
@@ -59,8 +61,8 @@ export default function Register() {
   // LOGIN
   const handleLogin = async (e) => {
     e.preventDefault();
-
-     axios.defaults.withCredentials = true;
+    const navigate = useNavigate();
+    axios.defaults.withCredentials = true;
 
     try {
       const res = await axios.post("https://task-manager-backend-uuwk.onrender.com/login", {
@@ -83,9 +85,9 @@ export default function Register() {
 
        localStorage.setItem("activeTab", "open");
 
-      if (userRole === "admin") window.location.href = "/admin-dashboard";
-      else if (userRole === "teacher") window.location.href = "/teacher-dashboard";
-      else window.location.href = "/student-dashboard";
+      if (userRole === "admin") navigate("/admin-dashboard");
+      else if (userRole === "teacher") navigate("/teacher-dashboard");
+      else navigate("/student-dashboard");
 
     } catch (err) {
       alert(err.response?.data?.message || "Login failed");
