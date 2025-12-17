@@ -16,12 +16,23 @@ const app = express();
 const PORT = 3000;
 // cors because backend and front end are running on different port numbers
 const cors = require("cors");
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://task-manager-app-vercel-gamma.vercel.app",
+  "https://task-manager-app-v-git-98306b-gaurav-malviyas-projects-fcecf2c3.vercel.app"
+];
+
 app.use(cors({
-  origin: true,
-  methods: ["GET", "POST", "PUT", "DELETE"],
-   // <-- change to your React app origin (protocol + host + port)
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS not allowed"));
+    }
+  },
   credentials: true
 }));
+
 
 app.use("/uploads", express.static("uploads"));
 // --------------------------------------------------
