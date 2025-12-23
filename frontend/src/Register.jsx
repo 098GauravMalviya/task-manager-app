@@ -66,7 +66,7 @@ export default function Register() {
     axios.defaults.withCredentials = true;
 
     try {
-      const res = await axios.post("https://task-manager-app-vercel-d6eogz5y0.vercel.app/login", {
+      const res = await axios.post("https://task-manager-backend-uuwk.onrender.com/login", {
         username: loginUser,
         password: loginPass,
 
