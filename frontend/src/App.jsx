@@ -6,11 +6,14 @@ import TeacherUpload from "./components/Assignments/TeacherUpload";
 import StudentAssignment from "./components/Assignments/StudentAssignment";
 import CreateAssignment from "./CreateAssignment";
 import ProtectedRoute from "./privateroute.jsx";
+import AdminDashboard from "./AdminDashboard.jsx";
+import NotFound from "./NotFound.jsx";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Register />} />
+      <Route path="*" element={<NotFound />} />
 
       {/* ---- PROTECTED ROUTES ---- */}
       <Route
@@ -27,6 +30,15 @@ function App() {
         element={
           <ProtectedRoute>
             <TeacherDashboard />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/admin-dashboard"
+        element={
+          <ProtectedRoute>
+            <AdminDashboard />
           </ProtectedRoute>
         }
       />
