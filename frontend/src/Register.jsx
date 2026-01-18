@@ -2,6 +2,7 @@ import "./Register.css";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "./config";
 
 
 export default function Register() {
@@ -29,10 +30,10 @@ export default function Register() {
 
     try {
       const res = await axios.post(
-  "https://task-manager-backend-uuwk.onrender.com/register",
-  { username, email, password, role },
-  { withCredentials: true }
-);
+        `${API_BASE_URL}/register`,
+        { username, email, password, role },
+        { withCredentials: true }
+      );
 
       setMessage(res.data.message);
       setShowVerifyPopup(true);
@@ -45,10 +46,10 @@ export default function Register() {
   const handleVerify = async () => {
     try {
       const res = await axios.post(
-  "https://task-manager-backend-uuwk.onrender.com/verify-email",
-  { username, code: verificationCode },
-  { withCredentials: true }
-);
+        `${API_BASE_URL}/verify-email`,
+        { username, code: verificationCode },
+        { withCredentials: true }
+      );
 
 
       setMessage(res.data.message);
@@ -62,17 +63,17 @@ export default function Register() {
   // LOGIN
   const handleLogin = async (e) => {
     e.preventDefault();
-    
+
     axios.defaults.withCredentials = true;
 
     try {
-      const res = await axios.post("https://task-manager-backend-uuwk.onrender.com/login", {
+      const res = await axios.post(`${API_BASE_URL}/login`, {
         username: loginUser,
         password: loginPass,
 
-      }, {withCredentials: true});
+      }, { withCredentials: true });
 
-      
+
 
       localStorage.setItem("userRole", res.data.role);
       localStorage.setItem("userId", res.data.userId);
@@ -84,7 +85,7 @@ export default function Register() {
       alert("Login Successful!");
       const userRole = res.data.role;
 
-       localStorage.setItem("activeTab", "open");
+      localStorage.setItem("activeTab", "open");
 
       if (userRole === "admin") navigate("/admin-dashboard");
       else if (userRole === "teacher") navigate("/teacher-dashboard");
@@ -101,13 +102,13 @@ export default function Register() {
       {/* ---------------- LEFT SIDE (Logo + Image) ---------------- */}
       <div className="left-side">
         <div className="floating-bg">
-          
-        </div> 
-        
+
+        </div>
+
         <div className="image-box">
           {/* You will replace this with your own design or image */}
           <h1 className="logo">Task Manager </h1>
-        <p className="tagline">Your smart portal </p>
+          <p className="tagline">Your smart portal </p>
           <p className="image">a</p>
 
         </div>
@@ -118,8 +119,8 @@ export default function Register() {
 
         {/* NAV BAR */}
         <nav className="nav-bar">
-          
-          
+
+
           <button onClick={() => setPage("login")}>Login</button>
           <button onClick={() => setPage("register")}>Register</button>
           <button onClick={() => setPage("home")}>Why Us?</button>
@@ -128,23 +129,23 @@ export default function Register() {
         {/* ---------------- HOME PAGE ---------------- */}
         {page === "home" && (
           <div className="section">
-          <h2> Why Choose Us?</h2> 
-          <h4>Stay Organized, Stay Ahead</h4>
-          <p>Our task manager helps you bring clarity to your day. No more scattered notes or forgotten deadlines — everything you need is in one place.</p>
+            <h2> Why Choose Us?</h2>
+            <h4>Stay Organized, Stay Ahead</h4>
+            <p>Our task manager helps you bring clarity to your day. No more scattered notes or forgotten deadlines — everything you need is in one place.</p>
 
-          <h4>Simple, Fast & Intuitive</h4>
-          <p>Designed with a clean and minimal interface, managing tasks feels effortless. Add, edit, track, and complete tasks without any confusion or clutter.</p>
-          <h4>Smart Reminders</h4>
-          <p>Never miss a deadline again. Our intelligent reminder system notifies you exactly when you need it — not too early, not too late.</p>
-          <h4>Personalized Productivity</h4>
-          <p>Customize your workflow with categories, priorities, tags, and themes. Make the app adapt to your way of working, not the other way around.</p>
+            <h4>Simple, Fast & Intuitive</h4>
+            <p>Designed with a clean and minimal interface, managing tasks feels effortless. Add, edit, track, and complete tasks without any confusion or clutter.</p>
+            <h4>Smart Reminders</h4>
+            <p>Never miss a deadline again. Our intelligent reminder system notifies you exactly when you need it — not too early, not too late.</p>
+            <h4>Personalized Productivity</h4>
+            <p>Customize your workflow with categories, priorities, tags, and themes. Make the app adapt to your way of working, not the other way around.</p>
 
 
-          <h4>Sync Across All Devices</h4>
-          <p>Your tasks stay updated everywhere — mobile, desktop, or tablet. Continue working seamlessly from where you left off.</p>
+            <h4>Sync Across All Devices</h4>
+            <p>Your tasks stay updated everywhere — mobile, desktop, or tablet. Continue working seamlessly from where you left off.</p>
 
-          <h4>Team Collaboration Made Easy</h4>
-          <p>Share tasks, assign responsibilities, and track progress together. Perfect for students, professionals, and teams alike.</p>
+            <h4>Team Collaboration Made Easy</h4>
+            <p>Share tasks, assign responsibilities, and track progress together. Perfect for students, professionals, and teams alike.</p>
 
           </div>
         )}

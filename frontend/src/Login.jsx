@@ -2,6 +2,7 @@ import "./login.css"
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "./config";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -14,7 +15,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("https://task-manager-backend-uuwk.onrender.com/login", {
+      const res = await axios.post(`${API_BASE_URL}/login`, {
         username,
         password,
       });

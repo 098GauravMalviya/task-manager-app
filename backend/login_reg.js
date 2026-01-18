@@ -13,7 +13,7 @@ const nodemailer = require('nodemailer');
 const path = require('path');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 // cors because backend and front end are running on different port numbers
 const cors = require("cors");
 const allowedOrigins = [
@@ -52,11 +52,11 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-  httpOnly: true,
-  secure: process.env.NODE_ENV === "production",
-  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
-  maxAge: 1000 * 60 * 60 * 24
-}
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      maxAge: 1000 * 60 * 60 * 24
+    }
   })
 );
 //upload assignment 
@@ -79,8 +79,8 @@ const userSchema = new mongoose.Schema({
   password: String,
   email: String,
 
-    // different roles in the user schema
-   role: {
+  // different roles in the user schema
+  role: {
     type: String,
     enum: ["admin", "teacher", "student"],
     default: "student"
@@ -130,7 +130,7 @@ app.get("/auth/check", verifySession, (req, res) => {
 app.post('/register', async (req, res) => {
   const { username, password, email, role } = req.body;
 
-  console.log("Received data:", req.body); 
+  console.log("Received data:", req.body);
 
   if (!username || !password || !email) {
     return res.status(400).json({ message: 'Please provide username, email and password' });
@@ -151,7 +151,7 @@ app.post('/register', async (req, res) => {
     username,
     email,
     password: hashedPassword,
-    role: role||"student",
+    role: role || "student",
     verificationCode,
     isVerified: false
   });
@@ -170,7 +170,7 @@ app.post('/register', async (req, res) => {
     });
 
     res.status(201).json({ message: 'User registered. Check email for verification code.' });
-  } 
+  }
   catch (error) {
     console.log("Email sending failed:", error.message);
 
@@ -265,7 +265,7 @@ app.post('/logout', (req, res) => {
   req.session.destroy(err => {
     if (err)
       return res.status(500).json({ message: 'Error logging out' });
-    
+
     res.json({ message: 'Logged out successfully' });
   });
 });

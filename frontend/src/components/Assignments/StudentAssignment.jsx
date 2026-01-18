@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../../config";
 
 const StudentAssignment = () => {
   const [assignments, setAssignments] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/assignments/all")
+    axios.get(`${API_BASE_URL}/assignments/all`)
       .then(res => setAssignments(res.data))
       .catch(() => alert("Error fetching assignments"));
   }, []);
