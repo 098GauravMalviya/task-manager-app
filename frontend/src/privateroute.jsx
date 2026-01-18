@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
+import { API_BASE_URL } from "./config";
 
 axios.defaults.withCredentials = true;
 
@@ -9,7 +10,7 @@ export default function ProtectedRoute({ children }) {
 
   useEffect(() => {
     axios
-      .get("https://task-manager-backend-uuwk.onrender.com/auth/check")
+      .get(`${API_BASE_URL}/auth/check`)
       .then((res) => {
         if (res.data.loggedIn) setIsAuth(true);
         else setIsAuth(false);

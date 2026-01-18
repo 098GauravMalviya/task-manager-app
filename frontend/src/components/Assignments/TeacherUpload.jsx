@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../../config";
 
 const TeacherUpload = () => {
   const [title, setTitle] = useState("");
@@ -13,7 +14,7 @@ const TeacherUpload = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:3000/assignments/create", {
+      const res = await axios.post(`${API_BASE_URL}/assignments/create`, {
         title,
         description,
         dueDate,

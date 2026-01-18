@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "./config";
 
 export default function CreateAssignment() {
 
@@ -12,7 +13,7 @@ export default function CreateAssignment() {
     const teacherId = localStorage.getItem("userId");
 
     try {
-      await axios.post("https://task-manager-backend-uuwk.onrender.com/tasks/create", {
+      await axios.post(`${API_BASE_URL}/tasks/create`, {
         title,
         description,
         teacherId
@@ -31,7 +32,7 @@ export default function CreateAssignment() {
       <h2>Create New Assignment</h2>
 
       <form onSubmit={handleCreate}>
-        <input 
+        <input
           placeholder="Assignment Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
